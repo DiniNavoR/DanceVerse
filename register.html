@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dancer Register</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#0b0b0b;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+.card{
+    background:#1a1a1a;
+    padding:40px;
+    width:350px;
+    border-radius:15px;
+    box-shadow:0 0 25px rgba(168,85,247,0.7);
+    text-align:center;
+}
+h2{
+    color:#a855f7;
+}
+input,select{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:none;
+    border-radius:8px;
+}
+button{
+    width:100%;
+    padding:12px;
+    background:#a855f7;
+    border:none;
+    border-radius:20px;
+    color:white;
+    cursor:pointer;
+}
+button:hover{
+    background:#9333ea;
+}
+a{
+    color:#c084fc;
+    text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h2>Dancer Register</h2>
+
+    <input type="text" placeholder="Username">
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Password">
+
+    <select>
+        <option>Primary Dance Style</option>
+        <option>Hip Hop</option>
+        <option>Ballet</option>
+        <option>Latin</option>
+        <option>Traditional</option>
+    </select>
+
+    <select>
+        <option>Skill Level</option>
+        <option>Beginner</option>
+        <option>Intermediate</option>
+        <option>Advanced</option>
+    </select>
+
+    <input type="file">
+
+    <button>Register</button>
+
+    <p>Already have account? <a href="login.html">Login</a></p>
+</div>
+
+</body>
+</html>

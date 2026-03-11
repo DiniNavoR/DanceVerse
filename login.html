@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dancer Authentication</title>
+    
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0b0b0b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .auth-container {
+            display: flex;
+            background: linear-gradient(145deg, #1a1a1a, #2b0a45);
+            border-radius: 20px;
+            box-shadow: 0 0 35px rgba(168, 85, 247, 0.7);
+            max-width: 900px;
+            width: 100%;
+            overflow: hidden;
+            flex-direction: row; /* Default split horizontally on desktop */
+        }
+
+        .form-section {
+            flex: 1;
+            padding: 40px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Divider between the two forms */
+        .divider {
+            width: 1px;
+            background: rgba(168, 85, 247, 0.3);
+            margin: 40px 0;
+        }
+
+        h2 {
+            color: #c084fc;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 10px;
+            background: #1f1f1f;
+            color: white;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        input::placeholder, select {
+            color: #999;
+        }
+        
+        input[type="file"] {
+            padding: 9px;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .checkbox {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            margin-bottom: 15px;
+            justify-content: flex-start;
+        }
+        
+        .checkbox input {
+            width: auto;
+            margin: 0;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #a855f7;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 5px;
+        }
+
+        button:hover {
+            background: #9333ea;
+            box-shadow: 0 0 15px #a855f7;
+        }
+
+        .social {
+            margin-top: 20px;
+        }
+
+        .social button {
+            margin: 5px 0;
+            background: #1f1f1f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 14px;
+        }
+        
+        .social button:hover {
+            background: #333;
+            box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+        }
+        
+        .social-icon {
+            width: 18px;
+            height: 18px;
+        }
+
+        a {
+            color: #c084fc;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        p {
+            margin: 15px 0 0 0;
+            font-size: 14px;
+        }
+        
+        .or-divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 15px 0;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .or-divider::before,
+        .or-divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #333;
+        }
+        
+        .or-divider span {
+            padding: 0 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .auth-container {
+                flex-direction: column;
+            }
+
+            .divider {
+                width: auto;
+                height: 1px;
+                margin: 0 40px;
+            }
+            
+            .form-section {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="auth-container">
+    
+    <!-- Login Section -->
+    <div class="form-section">
+        <h2>Dancer Login</h2>
+
+        <form onsubmit="event.preventDefault(); alert('Login clicked');">
+            <input type="email" placeholder="Email Address" required>
+            <input type="password" placeholder="Password" required>
+
+            <div class="checkbox">
+                <input type="checkbox" id="rememberMe"> 
+                <label for="rememberMe">Remember me</label>
+            </div>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <p><a href="#">Forgot password?</a></p>
+
+        <div class="or-divider">
+            <span>OR</span>
+        </div>
+
+        <div class="social">
+            <button>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo" class="social-icon">
+                Login with Google
+            </button>
+            <button>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="Facebook Logo" class="social-icon">
+                Login with Facebook
+            </button>
+        </div>
+    </div>
+
+    <!-- Divider Line -->
+    <div class="divider"></div>
+
+    <!-- Register Section -->
+    <div class="form-section">
+        <h2>Dancer Register</h2>
+
+        <form onsubmit="event.preventDefault(); alert('Register clicked');">
+            <input type="text" placeholder="Username" required>
+            <input type="email" placeholder="Email Address" required>
+            <input type="password" placeholder="Password" required>
+
+            <select required>
+                <option value="" disabled selected>Primary Dance Style</option>
+                <option value="hiphop">Hip Hop</option>
+                <option value="ballet">Ballet</option>
+                <option value="latin">Latin</option>
+                <option value="traditional">Traditional</option>
+            </select>
+
+            <select required>
+                <option value="" disabled selected>Skill Level</option>
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+            </select>
+
+            <input type="file" accept="image/*" title="Profile Picture">
+
+            <button type="submit">Create Account</button>
+        </form>
+        
+        <div class="or-divider">
+            <span>OR</span>
+        </div>
+
+        <div class="social">
+            <button>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo" class="social-icon">
+                Register with Google
+            </button>
+            <button>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="Facebook Logo" class="social-icon">
+                Register with Facebook
+            </button>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

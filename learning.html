@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dance Styles</title>
+
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link href="files/logo.png" rel="icon">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0b0b0b;
+            color: white;
+        }
+
+        .header {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .header h1 {
+            color: #a855f7;
+            font-size: 42px;
+        }
+
+        /* Sections */
+        .section {
+            padding: 40px;
+        }
+
+        .section h2 {
+            color: #a855f7;
+            margin-bottom: 20px;
+        }
+
+        /* Cards */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #1a1a1a;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .tag {
+            color: #a855f7;
+            font-size: 13px;
+        }
+
+        /* Challenge */
+        .challenge {
+            background: #1a1a1a;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        /* Leaderboard */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #333;
+            text-align: center;
+        }
+
+        th {
+            color: #a855f7;
+        }
+
+        /* Buttons */
+        button {
+            background: #a855f7;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #9333ea;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div style="display: flex;">
+            <a href="index.html">
+            <img src="files/logo.png" width="100px" height="100px">
+            </a>
+            <a href="index.html">
+            <h1 style="padding-top: 30px;">DanceVerse</h1>
+            </a>
+        </div>
+
+        <div style="padding-top: 29px;">
+            <a href="index.html">Home</a>
+            <a href="styles.html">Styles</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <div class="header">
+        <h1>Dance Learning Hub</h1>
+        <p>Learn • Practice • Compete</p>
+    </div>
+
+    <!-- Tutorials Section -->
+    <div class="section">
+        <h2>Tutorials</h2>
+
+        <div class="grid">
+            <div class="card">
+                <img src="files/hiphop/hiphop.webp">
+                <div class="card-content">
+                    <h3>Hip Hop Basics</h3>
+                    <p>Step-by-step beginner tutorial</p>
+                    <span class="tag">Beginner</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="files/salsa/salsa.webp">
+                <div class="card-content">
+                    <h3>Salsa Foundations</h3>
+                    <p>Core posture and balance training</p>
+                    <span class="tag">Beginner</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="files/salsa/salsa.webp">
+                <div class="card-content">
+                    <h3>Salsa Starter</h3>
+                    <p>Learn basic salsa steps</p>
+                    <span class="tag">Beginner</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="files/traditional/traditional.webp">
+                <div class="card-content">
+                    <h3>Traditional Foundations</h3>
+                    <p>Core posture and balance training</p>
+                    <span class="tag">Beginner</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="files/salsa/salsa.webp">
+                <div class="card-content">
+                    <h3>Salsa Foundations</h3>
+                    <p>Core posture and balance training</p>
+                    <span class="tag">Intermediate</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="files/hiphop/hiphop.webp">
+                <div class="card-content">
+                    <h3>Hip Hop Basics</h3>
+                    <p>Step-by-step beginner tutorial</p>
+                    <span class="tag">Intermediate</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="files/ballet/">
+                <div class="card-content">
+                    <h3>Ballet Foundations</h3>
+                    <p>Core posture and balance training</p>
+                    <span class="tag">Beginner</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="files/traditional/traditional.webp">
+                <div class="card-content">
+                    <h3>Traditional Foundations</h3>
+                    <p>Core posture and balance training</p>
+                    <span class="tag">Intermediate</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Dance Move Library -->
+    <div class="section">
+        <h2>Dance Move Library</h2>
+
+        <div class="grid">
+            <div class="card">
+                <img src="images/hiphop.jpg">
+                <div class="card-content">
+                    <h3>Popping</h3>
+                    <p>Difficulty: Intermediate</p>
+                    <p>Tip: Focus on muscle control</p>
+                    <p>Common mistake: Overexaggerating movements</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="images/ballet.jpg">
+                <div class="card-content">
+                    <h3>Pirouette</h3>
+                    <p>Difficulty: Advanced</p>
+                    <p>Tip: Spotting technique is key</p>
+                    <p>Common mistake: Losing balance</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Weekly Challenge -->
+    <div class="section">
+        <h2>Weekly Challenge</h2>
+
+        <div class="challenge">
+            <h3>Hip Hop Freestyle Challenge</h3>
+            <p>Upload your freestyle video and win the leaderboard</p>
+            <button>Submit Video</button>
+        </div>
+
+        <!-- Leaderboard -->
+        <table>
+            <tr>
+                <th>Rank</th>
+                <th>Dancer</th>
+                <th>Points</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>@alex</td>
+                <td>980</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>@mia</td>
+                <td>870</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>@leo</td>
+                <td>800</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        © 2026 DanceVerse | Feel the Beat
+    </footer>
+
+</body>
+
+</html>
