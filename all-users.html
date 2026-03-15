@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DanceVerse - Registered Dancers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link href="files/logo.png" rel="icon">
+    <link rel="stylesheet" href="style.css">
+    <script src="auth.js"></script>
+    <script>Auth.requireAuth();</script>
+</head>
+
+<body class="users-page">
+
+    <nav>
+        <div style="display: flex;">
+            <a href="index.html">
+                <img src="files/logo.png" width="100px" height="100px">
+            </a>
+            <a href="index.html">
+                <h1 style="padding-top: 30px;">DanceVerse</h1>
+            </a>
+        </div>
+
+        <div style="padding-top: 29px;">
+            <a href="index.html">Home</a>
+            <a href="styles.html">Styles</a>
+            <a href="learning.html">Learning Hub</a>
+            <a href="all-users.html">Dancers</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+            <a href="login.html">Login</a>
+        </div>
+    </nav>
+
+    <header class="users-header">
+        <h1>Dancers</h1>
+        <p>Connect with dancers from across the world</p>
+    </header>
+
+    <div class="search-wrapper">
+        <input type="text" id="userSearch" class="search-input" placeholder="Search by name, handle or dance style...">
+    </div>
+
+    <main class="users-grid-container">
+        <div class="users-grid" id="usersGrid">
+            <!-- Mock User 1 -->
+            <div class="trending-card user-card" data-search="alex alex_moves hip hop freestyle">
+                <img src="https://th.bing.com/th?q=Hip+Hop+Dance+Shadow+Pose&w=120&h=120&c=1&rs=1&qlt=70&o=7&cb=1&dpr=1.3&pid=InlineBlock&rm=3&mkt=en-WW&cc=LK&setlang=en&adlt=moderate&t=1&mw=247"
+                    alt="Dancer">
+                <div class="card-content">
+                    <h3>@alex_moves</h3>
+                    <p>Hip Hop • Freestyle</p>
+                    <div class="stats">
+                        <span>❤️ 2.3K</span>
+                        <span>🔥 Trending</span>
+                    </div>
+                    <a href="#" class="follow-btn">Follow</a>
+                </div>
+            </div>
+
+            <!-- Mock User 2 -->
+            <div class="trending-card user-card" data-search="luna luna_groove salsa latin">
+                <img src="https://th.bing.com/th/id/OIP.S4e53twAFjOO5ut0KkXUsgHaHa?w=220&h=220&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
+                    alt="Dancer">
+                <div class="card-content">
+                    <h3>@luna_groove</h3>
+                    <p>Salsa • Latin Dance</p>
+                    <div class="stats">
+                        <span>❤️ 1.8K</span>
+                        <span>✨ Rising Star</span>
+                    </div>
+                    <a href="#" class="follow-btn">Follow</a>
+                </div>
+            </div>
+
+            <!-- Mock User 3 -->
+            <div class="trending-card user-card" data-search="maya maya_moves bharatanatyam classical">
+                <img src="https://www.bing.com/th/id/OIP.aJKtExA-qgsXPLu5vEgRTgHaFu?w=231&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                    alt="Dancer">
+                <div class="card-content">
+                    <h3>@maya_moves</h3>
+                    <p>Bharatanatyam • Classical</p>
+                    <div class="stats">
+                        <span>❤️ 2.6K</span>
+                        <span>🔥 Trending</span>
+                    </div>
+                    <a href="#" class="follow-btn">Follow</a>
+                </div>
+            </div>
+
+            <!-- Mock User 4 -->
+            <div class="trending-card user-card" data-search="leo leo_spin ballet contemporary">
+                <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&q=80"
+                    alt="Dancer">
+                <div class="card-content">
+                    <h3>@leo_spin</h3>
+                    <p>Ballet • Contemporary</p>
+                    <div class="stats">
+                        <span>❤️ 1.2K</span>
+                        <span>🌟 Pro</span>
+                    </div>
+                    <a href="#" class="follow-btn">Follow</a>
+                </div>
+            </div>
+
+            <!-- Mock User 5 -->
+            <div class="trending-card user-card" data-search="zara zara_vibe waacking street">
+                <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&q=80"
+                    alt="Dancer">
+                <div class="card-content">
+                    <h3>@zara_vibe</h3>
+                    <p>Waacking • Street Dance</p>
+                    <div class="stats">
+                        <span>❤️ 950</span>
+                        <span>⚡ Energetic</span>
+                    </div>
+                    <a href="#" class="follow-btn">Follow</a>
+                </div>
+            </div>
+
+            <!-- Mock User 6 -->
+            <div class="trending-card user-card" data-search="kavish kavish_steps kandyan traditional">
+                <img src="https://siba.edu.lk/adminImages/blogImage/652e0a8face66-traditionalDance.jpg" alt="Dancer">
+                <div class="card-content">
+                    <h3>@kavish_steps</h3>
+                    <p>Kandyan • Traditional</p>
+                    <div class="stats">
+                        <span>❤️ 3.1K</span>
+                        <span>🏆 Master</span>
+                    </div>
+                    <a href="#" class="follow-btn">Follow</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        © 2026 DanceVerse | Connect with the Rhythm
+    </footer>
+
+    <script>
+        document.getElementById('userSearch').addEventListener('input', function (e) {
+            const term = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.user-card');
+
+            cards.forEach(card => {
+                const searchData = card.getAttribute('data-search').toLowerCase();
+                if (searchData.includes(term)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
