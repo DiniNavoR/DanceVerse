@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
     <link href="files/logo.png" rel="icon">
     <link rel="stylesheet" href="style.css">
-
+    <script src="auth.js"></script>
 </head>
 <body>
 
@@ -24,8 +24,11 @@
         <div style="padding-top: 29px;">
             <a href="index.html">Home</a>
             <a href="styles.html">Styles</a>
+            <a href="learning.html">Learning Hub</a>
+            <a href="all-users.html">Dancers</a>
             <a href="gallery.html">Gallery</a>
             <a href="contact.html">Contact</a>
+            <a href="login.html">Login</a>
         </div>
     </nav>
 
@@ -48,41 +51,77 @@
     <!-- Gallery -->
     <div class="gallery">
         <div class="item hiphop">
-            <img src="" onclick="openLightbox(this)">
-            <div class="overlay"><h3>Hip Hop</h3></div>
+            <img src="https://images.unsplash.com/photo-1535525153412-5a42439a210d" onclick="openLightbox(this)" alt="Hip Hop Dance">
+            <div class="overlay" style="flex-direction: column;">
+                <h3>Hip Hop</h3>
+                <p style="color: #fff; font-size: 12px; margin-top: 10px; font-weight: bold;">@bboy_mike</p>
+            </div>
         </div>
 
         <div class="item ballet">
-            <img src="" onclick="openLightbox(this)">
-            <div class="overlay"><h3>Ballet</h3></div>
+            <img src="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57" onclick="openLightbox(this)" alt="Ballet Dance">
+            <div class="overlay" style="flex-direction: column;">
+                <h3>Ballet</h3>
+                <p style="color: #fff; font-size: 12px; margin-top: 10px; font-weight: bold;">@graceful_swan</p>
+            </div>
         </div>
 
-        <div class="item latin">
-            <img src="https://images.unsplash.com/photo-1601655781320-205e34c94eb1" onclick="openLightbox(this)">
-            <div class="overlay"><h3>Latin</h3></div>
+        <div class="item salsa">
+            <img src="https://images.unsplash.com/photo-1601655781320-205e34c94eb1" onclick="openLightbox(this)" alt="Salsa Dance">
+            <div class="overlay" style="flex-direction: column;">
+                <h3>Salsa</h3>
+                <p style="color: #fff; font-size: 12px; margin-top: 10px; font-weight: bold;">@latin_rhythm</p>
+            </div>
+        </div>
+
+        <div class="item bharatham">
+            <img src="https://images.unsplash.com/photo-1582736140523-7e44a04fc9c7" onclick="openLightbox(this)" alt="Bharatham Dance">
+            <div class="overlay" style="flex-direction: column;">
+                <h3>Bharatham</h3>
+                <p style="color: #fff; font-size: 12px; margin-top: 10px; font-weight: bold;">@nataraja_arts</p>
+            </div>
         </div>
 
         <div class="item traditional">
-            <img src="https://images.unsplash.com/photo-1598971861713-54ad16a7e72e" onclick="openLightbox(this)">
-            <div class="overlay"><h3>Traditional</h3></div>
+            <img src="https://images.unsplash.com/photo-1598971861713-54ad16a7e72e" onclick="openLightbox(this)" alt="Traditional Dance">
+            <div class="overlay" style="flex-direction: column;">
+                <h3>Traditional</h3>
+                <p style="color: #fff; font-size: 12px; margin-top: 10px; font-weight: bold;">@heritage_moves</p>
+            </div>
         </div>
 
         <div class="item hiphop">
-            <img src="https://images.unsplash.com/photo-1520975922284-1b4a6943f52b" onclick="openLightbox(this)">
-            <div class="overlay"><h3>Hip Hop</h3></div>
+            <img src="https://images.unsplash.com/photo-1520975922284-1b4a6943f52b" onclick="openLightbox(this)" alt="Hip Hop Dance 2">
+            <div class="overlay" style="flex-direction: column;">
+                <h3>Hip Hop</h3>
+                <p style="color: #fff; font-size: 12px; margin-top: 10px; font-weight: bold;">@urban_stepz</p>
+            </div>
+        </div>
+
+        <div class="item traditional">
+            <img src="https://images.unsplash.com/photo-1598971861713-54ad16a7e72e" onclick="openLightbox(this)" alt="Traditional Dance">
+            <div class="overlay" style="flex-direction: column;">
+                <h3>Traditional</h3>
+                <p style="color: #fff; font-size: 12px; margin-top: 10px; font-weight: bold;">@heritage_moves</p>
+            </div>
         </div>
 
         <div class="item ballet">
-            <img src="https://images.unsplash.com/photo-1549899598-1b2a3f7a59ab" onclick="openLightbox(this)">
-            <div class="overlay"><h3>Ballet</h3></div>
+            <img src="https://images.unsplash.com/photo-1549899598-1b2a3f7a59ab" onclick="openLightbox(this)" alt="Ballet Dance 2">
+            <div class="overlay" style="flex-direction: column;">
+                <h3>Ballet</h3>
+                <p style="color: #fff; font-size: 12px; margin-top: 10px; font-weight: bold;">@ballet_dreams</p>
+            </div>
         </div>  
         
-        
-        <button class="item">Add Images + </button>
+        <button class="item" style="background: #111; color: #a855f7; border: 2px dashed #a855f7; border-radius: 15px; cursor: pointer; transition: 0.3s;" onclick="alert('Upload functionality coming soon!')">Add Images + </button>
 
     </div>
 
-  
+    <!-- Pagination -->
+    <div class="pagination" id="pagination">
+        <!-- Pagination buttons will be injected here -->
+    </div>
 
     <!-- Lightbox -->
     <div class="lightbox" id="lightbox">
@@ -95,32 +134,7 @@
         © 2026 DanceVerse | Feel the Beat
     </footer>
 
-    <script>
-        function filterGallery(category) {
-            const items = document.querySelectorAll('.item');
-            const buttons = document.querySelectorAll('.filters button');
-
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            items.forEach(item => {
-                if (category === 'all' || item.classList.contains(category)) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        }
-
-        function openLightbox(img) {
-            document.getElementById('lightbox').style.display = 'flex';
-            document.getElementById('lightboxImg').src = img.src;
-        }
-
-        function closeLightbox() {
-            document.getElementById('lightbox').style.display = 'none';
-        }
-    </script>
+    <script src="script.js"></script>
 
 </body>
 </html>
