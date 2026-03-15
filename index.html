@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
     <link href="files/logo.png" rel="icon">
     <link rel="stylesheet" href="style.css">
+    <script src="auth.js"></script>
 </head>
 
 <body>
@@ -17,34 +18,108 @@
     <nav>
         <div style="display: flex;" id="brand">
             <a href="index.html">
-            <img src="files/logo.png" width="100px" height="100px">
+                <img src="files/logo.png" width="100px" height="100px">
             </a>
             <a href="index.html">
-            <h1 style="padding-top: 30px;">DanceVerse</h1>
+                <h1 style="padding-top: 30px;">DanceVerse</h1>
             </a>
         </div>
 
         <div style="padding-top: 29px;">
             <a href="index.html">Home</a>
             <a href="styles.html">Styles</a>
+            <a href="learning.html">Learning Hub</a>
+            <a href="all-users.html">Dancers</a>
             <a href="gallery.html">Gallery</a>
             <a href="contact.html">Contact</a>
+            <a href="login.html">Login</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div>
-            <h2>Explore Dance Styles</h2>
-            <p>Feel the rhythm • Express the soul • Move with passion</p>
-            <div class="style-content">
-                <a href="#scroll">Learn More</a>
+    <header class="hero">
+        <div class="hero-content">
+            <h2>Unlock Your Rhythm</h2>
+            <p>Join the ultimate dance community. Learn, Share, and Dance!</p>
+            <div style="margin-top: 25px; display: flex; gap: 15px; justify-content: center;">
+                <a href="learning.html" class="btn-primary-custom" style="text-decoration: none;">Start Learning</a>
+                <a href="login.html" id="heroRegisterBtn" class="btn-primary-custom" style="text-decoration: none; background: transparent; border: 2px solid #a855f7;">Register Now</a>
             </div>
         </div>
+    </header>
+
+
+    <div>
+        <h4 style="padding: 45px;text-align: center;">Trending Dancers</h4>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:20px 45px;">
+            <h4>For this week</h4>
+            <a href="all-users.html" class="see-all-btn">See All Users</a>
+        </div>
+
+        <section style="display: flex; padding: 25px; gap: 25px;">
+
+
+            <div class="trending-card">
+                <img src="https://th.bing.com/th?q=Hip+Hop+Dance+Shadow+Pose&w=120&h=120&c=1&rs=1&qlt=70&o=7&cb=1&dpr=1.3&pid=InlineBlock&rm=3&mkt=en-WW&cc=LK&setlang=en&adlt=moderate&t=1&mw=247"
+                    alt="Dancer">
+
+                <div class="card-content">
+                    <h3>@alex_moves</h3>
+                    <p>Hip Hop • Freestyle</p>
+
+                    <div class="stats">
+                        <span>❤️ 2.3K</span>
+                        <span>🔥 Trending</span>
+                    </div>
+
+                    <a href="#" class="follow-btn">Follow</a>
+                </div>
+
+            </div>
+
+            <div class="trending-card">
+                <img src="https://th.bing.com/th/id/OIP.S4e53twAFjOO5ut0KkXUsgHaHa?w=220&h=220&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
+                    alt="Dancer">
+
+                <div class="card-content">
+                    <h3>@luna_groove</h3>
+                    <p>Salsa • Latin Dance</p>
+
+                    <div class="stats">
+                        <span>❤️ 1.8K</span>
+                        <span>🔥 Trending</span>
+                    </div>
+
+                    <a href="#" class="follow-btn">Follow</a>
+                </div>
+            </div>
+
+            <div class="trending-card">
+                <img src="https://www.bing.com/th/id/OIP.aJKtExA-qgsXPLu5vEgRTgHaFu?w=231&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                    alt="Dancer">
+
+                <div class="card-content">
+                    <h3>@maya_moves</h3>
+                    <p>Bharatanatyam • Classical</p>
+
+                    <div class="stats">
+                        <span>❤️ 2.6K</span>
+                        <span>🔥 Trending</span>
+                    </div>
+
+                    <a href="#" class="follow-btn">Follow</a>
+                </div>
+            </div>
+
+    </div>
+
+
+
     </section>
+    </div>
 
-
-    <section class="aboutUs">
+    <section id="scroll" class="aboutUs">
         <div>
             <div>
                 <h2>About Us</h2>
@@ -60,157 +135,104 @@
         </div>
     </section>
 
-    <div id="scroll">
-    <h4 style="padding: 45px;text-align: center;">Trending Dancers</h4>
+    <section class="vision-mission">
+        <h1 class="section-title">Vision & Mission</h1>
 
-    <section style="display: flex; padding: 25px; gap: 25px;">
+        <div class="vm-container">
 
+            <div class="vm-card">
+                <h2>Our Vision</h2>
+                <p>
+                    To become a globally recognized digital platform that empowers young dancers
+                    to learn, share, and celebrate diverse dance cultures while fostering creativity,
+                    collaboration, and cultural understanding through an interactive online community.
+                </p>
+            </div>
 
-        <div class="trending-card">
-            <img src="images/dancer1.jpg" alt="Dancer">
-
-            <div class="card-content">
-                <h3>@alex_moves</h3>
-                <p>Hip Hop • Freestyle</p>
-
-                <div class="stats">
-                    <span>❤️ 2.3K</span>
-                    <span>🔥 Trending</span>
-                </div>
-
-                <a href="#" class="follow-btn">Follow</a>
+            <div class="vm-card">
+                <h2>Our Mission</h2>
+                <p>
+                    Danceverse aims to provide an accessible and engaging online platform where
+                    dancers can explore a wide variety of dance styles, develop their skills through
+                    structured learning resources, and connect with a supportive global community.
+                    The platform encourages cultural exchange, creative expression, and opportunities
+                    for dancers to collaborate, perform, and grow artistically.
+                </p>
             </div>
 
         </div>
-
-        <div class="trending-card">
-            <img src="images/dancer1.jpg" alt="Dancer">
-
-            <div class="card-content">
-                <h3>@alex_moves</h3>
-                <p>Hip Hop • Freestyle</p>
-
-                <div class="stats">
-                    <span>❤️ 2.3K</span>
-                    <span>🔥 Trending</span>
-                </div>
-
-                <a href="#" class="follow-btn">Follow</a>
-            </div>
-
-        </div>
-
-        <div class="trending-card">
-            <img src="images/dancer1.jpg" alt="Dancer">
-
-            <div class="card-content">
-                <h3>@alex_moves</h3>
-                <p>Hip Hop • Freestyle</p>
-
-                <div class="stats">
-                    <span>❤️ 2.3K</span>
-                    <span>🔥 Trending</span>
-                </div>
-
-                <a href="#" class="follow-btn">Follow</a>
-            </div>
-
-        </div>
-
-        <div class="trending-card">
-            <img src="images/dancer1.jpg" alt="Dancer">
-
-            <div class="card-content">
-                <h3>@alex_moves</h3>
-                <p>Hip Hop • Freestyle</p>
-
-                <div class="stats">
-                    <span>❤️ 2.3K</span>
-                    <span>🔥 Trending</span>
-                </div>
-
-                <a href="#" class="follow-btn">Follow</a>
-            </div>
-
-        </div>
-
-        <div class="trending-card">
-            <img src="images/dancer1.jpg" alt="Dancer">
-
-            <div class="card-content">
-                <h3>@alex_moves</h3>
-                <p>Hip Hop • Freestyle</p>
-
-                <div class="stats">
-                    <span>❤️ 2.3K</span>
-                    <span>🔥 Trending</span>
-                </div>
-
-                <a href="#" class="follow-btn">Follow</a>
-            </div>
-
-        </div>
-
-        <div class="trending-card">
-            <img src="images/dancer1.jpg" alt="Dancer">
-
-            <div class="card-content">
-                <h3>@alex_moves</h3>
-                <p>Hip Hop • Freestyle</p>
-
-                <div class="stats">
-                    <span>❤️ 2.3K</span>
-                    <span>🔥 Trending</span>
-                </div>
-
-                <a href="#" class="follow-btn">Follow</a>
-            </div>
-
-        </div>
-
-        <div class="trending-card">
-            <img src="images/dancer1.jpg" alt="Dancer">
-
-            <div class="card-content">
-                <h3>@alex_moves</h3>
-                <p>Hip Hop • Freestyle</p>
-
-                <div class="stats">
-                    <span>❤️ 2.3K</span>
-                    <span>🔥 Trending</span>
-                </div>
-
-                <a href="#" class="follow-btn">Follow</a>
-            </div>
-
-        </div>
-
-        <div class="trending-card">
-            <img src="images/dancer1.jpg" alt="Dancer">
-
-            <div class="card-content">
-                <h3>@alex_moves</h3>
-                <p>Hip Hop • Freestyle</p>
-
-                <div class="stats">
-                    <span>❤️ 2.3K</span>
-                    <span>🔥 Trending</span>
-                </div>
-
-                <a href="#" class="follow-btn">Follow</a>
-            </div>
-
-        </div>
-
     </section>
+
+    <!-- Most Popular Tutorials 
+    <div id="tutorials-preview" class="learning-page" style="padding-bottom: 60px;">
+        <h4 style="padding: 45px; text-align: center;">Most Popular Tutorials</h4>
+
+        <div class="grid" style="max-width: 1200px; margin: auto; padding: 0 25px;">
+            <a href="learning.html#hiphop" class="card" style="text-decoration: none; color: inherit;">
+                <img src="files/hiphop/hiphop.webp" alt="Hip Hop">
+                <div class="card-content">
+                    <h3>Hip Hop Basics</h3>
+                    <p>Step-by-step beginner tutorial</p>
+                    <span class="tag">Beginner</span>
+                </div>
+            </a>
+
+            <a href="learning.html#salsa" class="card" style="text-decoration: none; color: inherit;">
+                <img src="files/salsa/salsa.webp" alt="Salsa">
+                <div class="card-content">
+                    <h3>Salsa Foundations</h3>
+                    <p>Core posture and balance training</p>
+                    <span class="tag">Beginner</span>
+                </div>
+            </a>
+
+            <a href="learning.html#ballet" class="card" style="text-decoration: none; color: inherit;">
+                <img src="https://static01.nyt.com/images/2023/05/24/arts/NYCB-season-promo/NYCB-season-highlights-07-videoSixteenByNine3000.jpg"
+                    alt="Ballet">
+                <div class="card-content">
+                    <h3>Ballet Foundations</h3>
+                    <p>Core posture and balance training</p>
+                    <span class="tag">Beginner</span>
+                </div>
+            </a>
+        </div>
+    
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="learning.html"
+                style="display: inline-block; padding: 12px 30px; background: #a855f7; color: white; text-decoration: none; border-radius: 25px; font-weight: bold; transition: 0.3s;"
+                onmouseover="this.style.background='#9333ea'; this.style.boxShadow='0 0 15px #a855f7';"
+                onmouseout="this.style.background='#a855f7'; this.style.boxShadow='none';">Explore All Tutorials</a>
+        </div>
+    </div>-->
+    <div style="text-align: center; margin-top: 40px; margin-bottom: 40px;">
+        <a href="learning.html"
+            style="display: inline-block; padding: 12px 30px; background: #a855f7; color: white; text-decoration: none; border-radius: 25px; font-weight: bold; transition: 0.3s;"
+            onmouseover="this.style.background='#9333ea'; this.style.boxShadow='0 0 15px #a855f7';"
+            onmouseout="this.style.background='#a855f7'; this.style.boxShadow='none';">Explore Learning Hub</a>
     </div>
-
-
     <!-- Footer -->
     <footer>
         © 2026 DanceVerse | Feel the Beat
     </footer>
 
+    <script>
+        // Hero button logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const regBtn = document.getElementById('heroRegisterBtn');
+            if (Auth.isLoggedIn()) {
+                regBtn.style.display = 'none';
+            } else {
+                regBtn.onclick = (e) => {
+                    e.preventDefault();
+                    window.location.href = 'login.html';
+                    setTimeout(() => {
+                        // This would need a param or shared state to trigger register view
+                        // For now we just go to login which has the toggle
+                    }, 100);
+                };
+            }
+        });
+    </script>
 </body>
 
 </html>
