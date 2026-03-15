@@ -522,6 +522,10 @@ button:hover {
     padding: 20px;
     box-sizing: border-box;
     gap: 40px;
+    background-image: url("files/landing\ image.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .auth-container {
