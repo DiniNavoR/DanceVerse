@@ -9,128 +9,30 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
     <link href="files/logo.png" rel="icon">
     <link rel="stylesheet" href="style.css">
-
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #0b0b0b;
-            color: white;
-        }
-
-        .header {
-            text-align: center;
-            padding: 50px 20px;
-        }
-
-        .header h1 {
-            color: #a855f7;
-            font-size: 42px;
-        }
-
-        /* Sections */
-        .section {
-            padding: 40px;
-        }
-
-        .section h2 {
-            color: #a855f7;
-            margin-bottom: 20px;
-        }
-
-        /* Cards */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background: #1a1a1a;
-            border-radius: 15px;
-            overflow: hidden;
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
-        }
-
-        .card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-
-        .card-content {
-            padding: 15px;
-        }
-
-        .tag {
-            color: #a855f7;
-            font-size: 13px;
-        }
-
-        /* Challenge */
-        .challenge {
-            background: #1a1a1a;
-            padding: 25px;
-            border-radius: 15px;
-            text-align: center;
-        }
-
-        /* Leaderboard */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th,
-        td {
-            padding: 10px;
-            border-bottom: 1px solid #333;
-            text-align: center;
-        }
-
-        th {
-            color: #a855f7;
-        }
-
-        /* Buttons */
-        button {
-            background: #a855f7;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #9333ea;
-        }
-    </style>
+    <script src="auth.js"></script>
+    <script>Auth.requireAuth();</script>
 </head>
 
-<body>
+<body class="learning-page">
 
     <nav>
         <div style="display: flex;">
             <a href="index.html">
-            <img src="files/logo.png" width="100px" height="100px">
+                <img src="files/logo.png" width="100px" height="100px">
             </a>
             <a href="index.html">
-            <h1 style="padding-top: 30px;">DanceVerse</h1>
+                <h1 style="padding-top: 30px;">DanceVerse</h1>
             </a>
         </div>
 
         <div style="padding-top: 29px;">
             <a href="index.html">Home</a>
             <a href="styles.html">Styles</a>
+            <a href="learning.html">Learning Hub</a>
+            <a href="all-users.html">Dancers</a>
             <a href="gallery.html">Gallery</a>
             <a href="contact.html">Contact</a>
+            <a href="login.html">Login</a>
         </div>
     </nav>
 
@@ -139,111 +41,143 @@
         <p>Learn • Practice • Compete</p>
     </div>
 
-    <!-- Tutorials Section -->
-    <div class="section">
-        <h2>Tutorials</h2>
 
-        <div class="grid">
-            <div class="card">
-                <img src="files/hiphop/hiphop.webp">
-                <div class="card-content">
-                    <h3>Hip Hop Basics</h3>
-                    <p>Step-by-step beginner tutorial</p>
-                    <span class="tag">Beginner</span>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="files/salsa/salsa.webp">
-                <div class="card-content">
-                    <h3>Salsa Foundations</h3>
-                    <p>Core posture and balance training</p>
-                    <span class="tag">Beginner</span>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="files/salsa/salsa.webp">
-                <div class="card-content">
-                    <h3>Salsa Starter</h3>
-                    <p>Learn basic salsa steps</p>
-                    <span class="tag">Beginner</span>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="files/traditional/traditional.webp">
-                <div class="card-content">
-                    <h3>Traditional Foundations</h3>
-                    <p>Core posture and balance training</p>
-                    <span class="tag">Beginner</span>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="files/salsa/salsa.webp">
-                <div class="card-content">
-                    <h3>Salsa Foundations</h3>
-                    <p>Core posture and balance training</p>
-                    <span class="tag">Intermediate</span>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="files/hiphop/hiphop.webp">
-                <div class="card-content">
-                    <h3>Hip Hop Basics</h3>
-                    <p>Step-by-step beginner tutorial</p>
-                    <span class="tag">Intermediate</span>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="files/ballet/">
-                <div class="card-content">
-                    <h3>Ballet Foundations</h3>
-                    <p>Core posture and balance training</p>
-                    <span class="tag">Beginner</span>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="files/traditional/traditional.webp">
-                <div class="card-content">
-                    <h3>Traditional Foundations</h3>
-                    <p>Core posture and balance training</p>
-                    <span class="tag">Intermediate</span>
-                </div>
-            </div>
-
-        </div>
-    </div>
 
     <!-- Dance Move Library -->
-    <div class="section">
-        <h2>Dance Move Library</h2>
-
-        <div class="grid">
-            <div class="card">
-                <img src="images/hiphop.jpg">
-                <div class="card-content">
-                    <h3>Popping</h3>
-                    <p>Difficulty: Intermediate</p>
-                    <p>Tip: Focus on muscle control</p>
-                    <p>Common mistake: Overexaggerating movements</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="images/ballet.jpg">
-                <div class="card-content">
-                    <h3>Pirouette</h3>
-                    <p>Difficulty: Advanced</p>
-                    <p>Tip: Spotting technique is key</p>
-                    <p>Common mistake: Losing balance</p>
-                </div>
-            </div>
+    <div class="section move-library">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+            <h2>Dance Move Library</h2>
+            <a href="all-moves.html" class="see-all-btn" style="background: #a855f7; color: white; padding: 10px 20px; border-radius: 20px; text-decoration: none; font-weight: bold; transition: 0.3s;" onmouseover="this.style.background='#9333ea'" onmouseout="this.style.background='#a855f7'">See All Moves Guide</a>
         </div>
+
+        <!-- Hip Hop Category -->
+        <div class="category-block">
+            <h3 id="hiphop">Hip Hop & Street Dance</h3>
+            <ul class="move-list">
+                <li>
+                    <img src="https://images.unsplash.com/photo-1547153760-18fc86324498" alt="Popping">
+                    <div class="move-details">
+                        <h4><a href="https://www.youtube.com/results?search_query=popping+move+in+hiphop+dance+tutorial" target="_blank">Popping</a></h4>
+                        <p><strong>Difficulty:</strong> Intermediate</p>
+                        <p><strong>Tip:</strong> Focus on muscle control</p>
+                        <p><strong>Common mistake:</strong> Overexaggerating movements</p>
+                    </div>
+                </li>
+                <li>
+                    <img src="https://images.unsplash.com/photo-1535525153412-5a42439a210d" alt="Locking">
+                    <div class="move-details">
+                        <h4><a href="https://www.youtube.com/results?search_query=locking+move+in+hiphop+dance+tutorial" target="_blank">Locking</a></h4>
+                        <p><strong>Difficulty:</strong> Beginner</p>
+                        <p><strong>Tip:</strong> Focus on sharp pauses and playful movements</p>
+                        <p><strong>Common mistake:</strong> Not exaggerating the lock positions</p>
+                    </div>
+                </li>
+                <li>
+                    <img src="https://images.unsplash.com/photo-1549887552-cb1071d3e5ca" alt="Breaking">
+                    <div class="move-details">
+                        <h4><a href="https://www.youtube.com/results?search_query=break+dance+basic+tutorial" target="_blank">Breaking</a></h4>
+                        <p><strong>Difficulty:</strong> Advanced</p>
+                        <p><strong>Tip:</strong> Practice balance and body strength regularly</p>
+                        <p><strong>Common mistake:</strong> Trying power moves before mastering basics</p>
+                    </div>
+                </li>
+                <li>
+                    <img src="https://images.unsplash.com/photo-1508700929628-666bc8bd84ea" alt="Waacking">
+                    <div class="move-details">
+                        <h4><a href="https://www.youtube.com/results?search_query=waacking+move+tutorial+for+hiphop+dance+" target="_blank">Waacking</a></h4>
+                        <p><strong>Difficulty:</strong> Intermediate</p>
+                        <p><strong>Tip:</strong> Keep arm movements fast and expressive</p>
+                        <p><strong>Common mistake:</strong> Losing rhythm while moving arms quickly</p>
+                    </div>
+                </li>
+                <li>
+                    <img src="https://images.unsplash.com/photo-1504609774014-cbac1b0ee7f2" alt="Krumping">
+                    <div class="move-details">
+                        <h4><a href="https://www.youtube.com/results?search_query=krumpingmove+tutorial+for+hiphop+dance+" target="_blank">Krumping</a></h4>
+                        <p><strong>Difficulty:</strong> Advanced</p>
+                        <p><strong>Tip:</strong> Express emotions strongly through body movement</p>
+                        <p><strong>Common mistake:</strong> Forgetting rhythm while focusing on energy</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Ballet Category -->
+        <div class="category-block">
+            <h3 id="ballet">Ballet</h3>
+            <ul class="move-list">
+                <li>
+                    <img src="https://www.youtube.com/results?search_query=Pirouette+move+tutorial+for+ballet+dance+" alt="Pirouette">
+                    <div class="move-details">
+                        <h4><a href="https://www.youtube.com/watch?v=7X8m8v2N_n8" target="_blank">Pirouette</a></h4>
+                        <p><strong>Difficulty:</strong> Advanced</p>
+                        <p><strong>Tip:</strong> Spotting technique is key</p>
+                        <p><strong>Common mistake:</strong> Losing balance</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Latin Category -->
+        <div class="category-block">
+            <h3 id="salsa">Latin & Salsa</h3>
+            <ul class="move-list">
+                <li>
+                    <img src="https://images.unsplash.com/photo-1504609774014-cbac1b0ee7f2" alt="Cross Body Lead">
+                    <div class="move-details">
+                        <h4><a href="https://www.youtube.com/results?search_query=Cross+Body+Lead+move+tutorial+for+Salsadance+" target="_blank">Cross Body Lead</a></h4>
+                        <p><strong>Difficulty:</strong> Intermediate</p>
+                        <p><strong>Tip:</strong> Guide your partner smoothly while maintaining rhythm</p>
+                        <p><strong>Common mistake:</strong> Turning too quickly and losing timing</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Bharatham Category -->
+        <div class="category-block">
+            <h3 id="bharatham">Bharatham</h3>
+            <ul class="move-list">
+                <li>
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/033/133/858/small_2x/bharatanatyam-traditional-indian-dance-banner-generate-ai-photo.jpg"
+                        alt="Alarippu">
+                    <div class="move-details">
+                        <h4><a href="https://www.youtube.com/results?search_query=Alarippu+move+tutorial+for+bharatham+dance+" target="_blank">Alarippu</a></h4>
+                        <p><strong>Difficulty:</strong> Beginner</p>
+                        <p><strong>Tip:</strong> Focus on head, neck, and eye movements</p>
+                        <p><strong>Common mistake:</strong> Not maintaining proper posture</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Traditional Category -->
+        <div class="category-block">
+            <h3 id="traditional">Traditional</h3>
+            <ul class="move-list">
+                <li>
+                    <img src="https://siba.edu.lk/adminImages/blogImage/652e0a8face66-traditionalDance.jpg"
+                        alt="Kandyan Dance Step">
+                    <div class="move-details">
+                        <h4><a href="https://www.youtube.com/results?search_query=kandian+dance+steps+tutorial+for+traditionaldance+" target="_blank">Kandyan Dance Step</a></h4>
+                        <p><strong>Difficulty:</strong> Intermediate</p>
+                        <p><strong>Tip:</strong> Maintain strong posture and energetic movements</p>
+                        <p><strong>Common mistake:</strong> Losing balance during jumps</p>
+                    </div>
+                </li>
+                <li>
+                    <img src="https://siba.edu.lk/adminImages/blogImage/652e0a8face66-traditionalDance.jpg"
+                        alt="Ves Dance Movement">
+                    <div class="move-details">
+                        <h4><a href="https://www.youtube.com/results?search_query=ves+dance+steps+tutorial+for+traditional+dance+tutorial" target="_blank">Ves Dance Movement</a></h4>
+                        <p><strong>Difficulty:</strong> Advanced</p>
+                        <p><strong>Tip:</strong> Focus on rhythmic footwork and powerful jumps</p>
+                        <p><strong>Common mistake:</strong> Not coordinating movements with drum beats</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
     </div>
 
     <!-- Weekly Challenge -->
