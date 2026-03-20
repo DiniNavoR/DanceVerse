@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DanceVerse - Admin: Challenge Submissions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link href="files/logo.png" rel="icon">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .admin-wrapper { max-width: 1100px; margin: 40px auto; padding: 0 20px 80px; }
+        .admin-title   { color: #a855f7; font-size: 36px; text-align: center; margin-bottom: 8px; }
+        .admin-sub     { text-align: center; color: #aaa; margin-bottom: 40px; font-size: 15px; }
+
+        .stats-bar { display: flex; gap: 20px; margin-bottom: 30px; flex-wrap: wrap; }
+        .stat-box  { background: #1a1a1a; border-radius: 12px; padding: 18px 28px; flex: 1; min-width: 130px; text-align: center; border: 1px solid #2a2a2a; }
+        .stat-box .num { font-size: 30px; font-weight: bold; color: #a855f7; }
+        .stat-box .lbl { font-size: 13px; color: #aaa; margin-top: 4px; }
+
+        .sub-card { background: #1a1a1a; border-radius: 14px; padding: 22px 26px; margin-bottom: 16px; border-left: 4px solid #333; }
+        .sub-card.pending  { border-left-color: #f59e0b; }
+        .sub-card.approved { border-left-color: #22c55e; }
+        .sub-card.rejected { border-left-color: #ef4444; opacity: 0.6; }
+
+        .sub-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; margin-bottom: 14px; }
+        .sub-handle { font-size: 18px; font-weight: bold; color: #c084fc; }
+        .sub-file   { color: #aaa; font-size: 13px; margin-top: 3px; }
+        .sub-date   { font-size: 12px; color: #555; }
+
+        .badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+        .badge-pending  { background: rgba(245,158,11,0.2);  color: #f59e0b; border: 1px solid rgba(245,158,11,0.4); }
+        .badge-approved { background: rgba(34,197,94,0.15);  color: #22c55e; border: 1px solid rgba(34,197,94,0.4); }
+        .badge-rejected { background: rgba(239,68,68,0.15);  color: #ef4444; border: 1px solid rgba(239,68,68,0.4); }
+
+        .sub-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 14px; }
+
+        .action-btn { border: none; padding: 7px 18px; border-radius: 20px; font-size: 13px; cursor: pointer; font-weight: bold; width: auto; transition: 0.3s; }
+        .action-btn:hover { box-shadow: none; transform: scale(1.03); }
+        .btn-approve { background: #22c55e; color: #000; }
+        .btn-reject  { background: #ef4444; color: #fff; }
+        .btn-approve:hover { background: #16a34a; }
+        .btn-reject:hover  { background: #dc2626; }
+
+        .points-input {
+            background: #111;
+            border: 1px solid #444;
+            color: white;
+            border-radius: 8px;
+            padding: 6px 10px;
+            font-size: 13px;
+            width: 80px;
+            outline: none;
+        }
+        .points-input:focus { border-color: #a855f7; }
+
+        .video-link { color: #c084fc; font-size: 13px; text-decoration: none; }
+        .video-link:hover { text-decoration: underline; color: #a855f7; }
+
+        .refresh-btn { display: inline-block; background: linear-gradient(135deg, #a855f7, #6b21a8); color: white; border: none; padding: 10px 24px; border-radius: 20px; cursor: pointer; font-size: 14px; width: auto; margin-bottom: 20px; }
+        .refresh-btn:hover { background: linear-gradient(135deg, #c084fc, #7e22ce); box-shadow: 0 0 15px rgba(168,85,247,0.4); }
+
+        .filter-tabs { display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap; }
+        .filter-tab  { background: none; border: 2px solid #333; color: #aaa; padding: 6px 18px; border-radius: 20px; cursor: pointer; font-size: 13px; width: auto; transition: 0.3s; }
+        .filter-tab.active, .filter-tab:hover { border-color: #a855f7; color: #a855f7; background: none; box-shadow: none; }
+
+        .loading { text-align: center; color: #aaa; padding: 60px 0; }
+        .empty   { text-align: center; color: #555; padding: 60px 0; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div style="display:flex;">
+            <a href="index.html"><img src="files/logo.png" width="100px" height="100px"></a>
+            <a href="index.html"><h1 style="padding-top:30px;">DanceVerse</h1></a>
+        </div>
+        <div style="padding-top:29px;">
+            <a href="index.html">Home</a>
+            <a href="learning.html">Learning Hub</a>
+            <a href="admin_messages.html">Messages</a>
+            <a href="login.html">Login</a>
+        </div>
+    </nav>
+
+    <div class="admin-wrapper">
+        <h1 class="admin-title">🎬 Challenge Submissions</h1>
+        <p class="admin-sub">Review, approve & award points to submitted videos</p>
+
+        <div class="stats-bar" id="statsBar"></div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
+            <div class="filter-tabs" id="filterTabs">
+                <button class="filter-tab active" onclick="setFilter('all',this)">All</button>
+                <button class="filter-tab" onclick="setFilter('pending',this)">⏳ Pending</button>
+                <button class="filter-tab" onclick="setFilter('approved',this)">✅ Approved</button>
+                <button class="filter-tab" onclick="setFilter('rejected',this)">❌ Rejected</button>
+            </div>
+            <button class="refresh-btn" onclick="loadSubmissions()">🔄 Refresh</button>
+        </div>
+
+        <div id="subList"><div class="loading">Loading submissions...</div></div>
+    </div>
+
+    <footer>© 2026 DanceVerse | Admin Panel</footer>
+
+    <script>
+        let allSubmissions = [];
+        let currentFilter  = 'all';
+
+        async function loadSubmissions() {
+            document.getElementById('subList').innerHTML = '<div class="loading">Loading...</div>';
+            try {
+                const res  = await fetch('api/get_submissions.php');
+                const data = await res.json();
+                if (!data.success) { document.getElementById('subList').innerHTML = '<div class="empty">Failed to load.</div>'; return; }
+
+                allSubmissions = data.submissions;
+
+                const pending  = allSubmissions.filter(s => s.status === 'pending').length;
+                const approved = allSubmissions.filter(s => s.status === 'approved').length;
+                const rejected = allSubmissions.filter(s => s.status === 'rejected').length;
+
+                document.getElementById('statsBar').innerHTML = `
+                    <div class="stat-box"><div class="num">${data.total}</div><div class="lbl">Total</div></div>
+                    <div class="stat-box"><div class="num" style="color:#f59e0b">${pending}</div><div class="lbl">Pending</div></div>
+                    <div class="stat-box"><div class="num" style="color:#22c55e">${approved}</div><div class="lbl">Approved</div></div>
+                    <div class="stat-box"><div class="num" style="color:#ef4444">${rejected}</div><div class="lbl">Rejected</div></div>
+                `;
+
+                renderList();
+            } catch(e) {
+                document.getElementById('subList').innerHTML = '<div class="empty">⚠️ Could not connect. Make sure XAMPP is running.</div>';
+            }
+        }
+
+        function setFilter(filter, btn) {
+            currentFilter = filter;
+            document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderList();
+        }
+
+        function renderList() {
+            const filtered = currentFilter === 'all'
+                ? allSubmissions
+                : allSubmissions.filter(s => s.status === currentFilter);
+
+            if (filtered.length === 0) {
+                document.getElementById('subList').innerHTML = '<div class="empty">No submissions found.</div>';
+                return;
+            }
+
+            document.getElementById('subList').innerHTML = filtered.map(s => `
+                <div class="sub-card ${s.status}" id="sub-${s.id}">
+                    <div class="sub-header">
+                        <div>
+                            <div class="sub-handle">${escHtml(s.handle)}</div>
+                            <div class="sub-file">
+                                📁 ${escHtml(s.original_name)} &nbsp;·&nbsp; ${s.file_size_mb} MB
+                                &nbsp;·&nbsp;
+                                <a class="video-link" href="uploads/challenges/${encodeURIComponent(s.video_filename)}" target="_blank">▶ Preview Video</a>
+                            </div>
+                            <div style="font-size:12px;color:#555;margin-top:3px;">
+                                Challenge: ${escHtml(s.challenge_title)}
+                            </div>
+                        </div>
+                        <div style="text-align:right;">
+                            <span class="badge badge-${s.status}">${s.status.toUpperCase()}</span>
+                            <div class="sub-date" style="margin-top:6px;">${formatDate(s.submitted_at)}</div>
+                        </div>
+                    </div>
+
+                    ${s.status !== 'rejected' ? `
+                    <div class="sub-actions">
+                        <label style="color:#aaa;font-size:13px;">Points:</label>
+                        <input type="number" class="points-input" id="pts-${s.id}"
+                               value="${s.points}" min="0" max="1000" placeholder="0">
+                        ${s.status !== 'approved' ? `<button class="action-btn btn-approve" onclick="review(${s.id},'approved')">✅ Approve</button>` : `<span style="color:#22c55e;font-size:13px;">✅ Approved</span>`}
+                        <button class="action-btn btn-reject"  onclick="review(${s.id},'rejected')">❌ Reject</button>
+                    </div>` : `
+                    <div style="color:#ef4444;font-size:13px;margin-top:8px;">This submission was rejected.</div>`}
+                </div>
+            `).join('');
+        }
+
+        async function review(id, status) {
+            const points = parseInt(document.getElementById('pts-' + id)?.value || 0);
+            try {
+                const res  = await fetch('api/review_submission.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ id, status, points })
+                });
+                const data = await res.json();
+                if (data.success) loadSubmissions();
+                else alert(data.message);
+            } catch(e) { alert('Failed to update submission.'); }
+        }
+
+        function formatDate(str) {
+            const d = new Date(str);
+            return d.toLocaleDateString('en-GB', { day:'2-digit', month:'short', year:'numeric' })
+                + ' ' + d.toLocaleTimeString('en-GB', { hour:'2-digit', minute:'2-digit' });
+        }
+        function escHtml(str) {
+            return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+        }
+
+        loadSubmissions();
+    </script>
+</body>
+</html>
