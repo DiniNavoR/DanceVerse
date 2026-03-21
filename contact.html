@@ -8,6 +8,36 @@
     <link href="files/logo.png" rel="icon">
     <link rel="stylesheet" href="style.css">
     <script src="auth.js"></script>
+    <style>
+        .alert-msg {
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 14px;
+            margin-bottom: 20px;
+            display: none;
+            text-align: left;
+        }
+        .alert-error {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            color: #f87171;
+        }
+        .alert-success {
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.4);
+            color: #86efac;
+        }
+        .send-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .char-count {
+            font-size: 12px;
+            color: #666;
+            text-align: right;
+            margin-top: 4px;
+        }
+    </style>
 </head>
 
 <body>
@@ -16,10 +46,10 @@
     <nav>
         <div style="display: flex;">
             <a href="index.html">
-            <img src="files/logo.png" width="100px" height="100px">
+                <img src="files/logo.png" width="100px" height="100px">
             </a>
             <a href="index.html">
-            <h1 style="padding-top: 30px;">DanceVerse</h1>
+                <h1 style="padding-top: 30px;">DanceVerse</h1>
             </a>
         </div>
 
@@ -36,27 +66,31 @@
 
     <div class="contact-container">
         <h1>Contact Us</h1>
-        <p>Have questions? Want to join our dance community? Let’s talk!</p>
+        <p>Have questions? Want to join our dance community? Let's talk!</p>
 
         <div class="contact-form">
-            <form>
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" placeholder="Enter your name" required id="name">
-                </div>
 
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" placeholder="Enter your email" required id="email">
-                </div>
+            <div class="alert-msg alert-error"   id="errorMsg"></div>
+            <div class="alert-msg alert-success"  id="successMsg"></div>
 
-                <div class="form-group">
-                    <label>Message</label>
-                    <textarea placeholder="Write your message here..." required id="msg"></textarea>
-                </div>
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" placeholder="Enter your name" id="name" maxlength="100">
+            </div>
 
-                <button type="submit">Send Message</button>
-            </form>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" placeholder="Enter your email" id="email">
+            </div>
+
+            <div class="form-group">
+                <label>Message</label>
+                <textarea placeholder="Write your message here..." id="msg" maxlength="2000"
+                    oninput="updateCharCount()"></textarea>
+                <p class="char-count" id="charCount">0 / 2000</p>
+            </div>
+
+            <button class="send-btn" id="sendBtn" onclick="handleContact()">Send Message</button>
         </div>
 
         <div class="info">
@@ -65,17 +99,89 @@
             📍 Sri Lanka
         </div>
 
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4047293.6388489604!2d78.06442855324926!3d7.849437947757501!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2593cf65a1e9d%3A0xe13da4b400e2d38c!2sSri%20Lanka!5e0!3m2!1sen!2slk!4v1773225381232!5m2!1sen!2slk" 
-                width="100%" height="300" style="border: 10px solid #a855f7; margin-top: 20px;" allowfullscreen>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4047293.6388489604!2d78.06442855324926!3d7.849437947757501!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2593cf65a1e9d%3A0xe13da4b400e2d38c!2sSri%20Lanka!5e0!3m2!1sen!2slk!4v1773225381232!5m2!1sen!2slk"
+            width="100%" height="300" style="border: 10px solid #a855f7; margin-top: 20px;" allowfullscreen>
         </iframe>
-
     </div>
 
-        <!-- Footer -->
+    <!-- Footer -->
     <footer>
         © 2026 DanceVerse | Feel the Beat
     </footer>
 
-</body>
+    <script>
+        function updateCharCount() {
+            const msg = document.getElementById('msg').value.length;
+            document.getElementById('charCount').textContent = msg + ' / 2000';
+        }
 
+        async function handleContact() {
+            const name    = document.getElementById('name').value.trim();
+            const email   = document.getElementById('email').value.trim();
+            const message = document.getElementById('msg').value.trim();
+
+            const errorMsg  = document.getElementById('errorMsg');
+            const successMsg = document.getElementById('successMsg');
+            const btn = document.getElementById('sendBtn');
+
+            errorMsg.style.display  = 'none';
+            successMsg.style.display = 'none';
+
+            // Client-side validation
+            if (!name || !email || !message) {
+                errorMsg.textContent = 'Please fill in all fields.';
+                errorMsg.style.display = 'block';
+                return;
+            }
+
+            if (message.length < 10) {
+                errorMsg.textContent = 'Message is too short (minimum 10 characters).';
+                errorMsg.style.display = 'block';
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
+
+            try {
+                const response = await fetch('api/contact.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, message })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    successMsg.textContent = '💜 ' + result.message;
+                    successMsg.style.display = 'block';
+
+                    // Clear form
+                    document.getElementById('name').value = '';
+                    document.getElementById('email').value = '';
+                    document.getElementById('msg').value = '';
+                    document.getElementById('charCount').textContent = '0 / 2000';
+
+                    btn.textContent = 'Message Sent!';
+                    setTimeout(() => {
+                        btn.disabled = false;
+                        btn.textContent = 'Send Message';
+                    }, 4000);
+                } else {
+                    errorMsg.textContent = result.message;
+                    errorMsg.style.display = 'block';
+                    btn.disabled = false;
+                    btn.textContent = 'Send Message';
+                }
+
+            } catch (err) {
+                errorMsg.textContent = 'Could not connect to server. Make sure XAMPP is running.';
+                errorMsg.style.display = 'block';
+                btn.disabled = false;
+                btn.textContent = 'Send Message';
+            }
+        }
+    </script>
+
+</body>
 </html>
